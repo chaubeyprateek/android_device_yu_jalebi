@@ -106,3 +106,8 @@ service imscmservice /system/bin/imscmservice
 on property:sys.ims.DATA_DAEMON_STATUS=1
    start ims_rtp_daemon
    start imscmservice
+
+on property:sys.boot_completed=1
+    restart ril-daemon
+    restart netmgrd
+    setprop persist.data.netmgrd.qos.enable false
